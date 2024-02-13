@@ -3,10 +3,13 @@ import torch
 from torchvision.models.detection import fasterrcnn_resnet50_fpn
 from PIL import Image
 from torchvision import transforms
-
+from torchvision.models.detection import FasterRCNN_ResNet50_FPN_Weights
+import torchvision
 # Assuming you have defined your model
 model = fasterrcnn_resnet50_fpn(weights = None) # Your PyTorch model
-output_dir = "/home/yifei/bdd100k/network_faster_rcnn"  # Directory containing the model files
+model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
+
+""" output_dir = "/home/yifei/bdd100k/network_faster_rcnn"  # Directory containing the model files
 
 # Loop through each model file in the output directory
 for epoch in range(26):  # Assuming you have model_0.pth to model_25.pth
@@ -15,7 +18,7 @@ for epoch in range(26):  # Assuming you have model_0.pth to model_25.pth
     
     # Load the weights from the model file
     checkpoint = torch.load(model_file_path, map_location=torch.device('cpu'))  # Load to CPU if needed
-    model.load_state_dict(checkpoint["model"])
+    model.load_state_dict(checkpoint["model"]) """
 
 model.eval()
 
