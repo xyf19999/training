@@ -19,7 +19,7 @@ for epoch in range(26):  # Assuming you have model_0.pth to model_25.pth
 
 model.eval()
 
-image = Image.open("/home/yifei/bdd100k/train2017/fe189115-8dabb5b1.jpg")
+image = Image.open("/home/yifei/bdd100k/val2017/b1c81faa-3df17267.jpg")
 
 # Define the transformation to convert the image to a PyTorch tensor
 transform = transforms.ToTensor()
