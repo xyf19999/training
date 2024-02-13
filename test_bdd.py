@@ -27,7 +27,9 @@ transform = transforms.ToTensor()
 # Apply the transformation to the image
 tensor_image = transform(image)
 
-predictions = model(tensor_image)
+images = [tensor_image]
+
+predictions = model(images)
 print(predictions)
 
 
