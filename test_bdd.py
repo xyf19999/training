@@ -1,15 +1,18 @@
+import os
 import torch
-from torchvision.models.detection import fasterrcnn_resnet50_fpn
 
-# Instantiate the pre-trained model without loading pre-trained weights
-model = fasterrcnn_resnet50_fpn(pretrained=False)
+# Assuming you have defined your model
+model = ...  # Your PyTorch model
+output_dir = "/home/yifei/bdd100k/network_faster_rcnn"  # Directory containing the model files
 
-# Load your custom weights from the .pth file
-# Adjust the file path according to where your weights are stored
-weights_path = "/home/yifei/bdd100k/network_faster_rcnn/model_25.pth"
-model.load_state_dict(torch.load(weights_path))
+# Loop through each model file in the output directory
+for epoch in range(26):  # Assuming you have model_0.pth to model_25.pth
+    # Construct the path to the model file for the current epoch
+    model_file_path = os.path.join(output_dir, f"model_{epoch}.pth")
+    
+    # Load the weights from the model file
+    checkpoint = torch.load(model_file_path, map_location=torch.device('cpu'))  # Load to CPU if needed
+    model.load_state_dict(checkpoint["model"])
 
-# Make sure to set the model to evaluation mode
-model.eval()
-
-# Now you can use this model for inference
+    # Now `model` contains the weights from the current model file (`model_{epoch}.pth`)
+    # You can use `model` for inference or further training
