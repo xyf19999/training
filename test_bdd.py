@@ -1,8 +1,9 @@
 import os
 import torch
+from torchvision.models.detection import fasterrcnn_resnet50_fpn
 
 # Assuming you have defined your model
-model = ...  # Your PyTorch model
+model = fasterrcnn_resnet50_fpn(pretrained=False) # Your PyTorch model
 output_dir = "/home/yifei/bdd100k/network_faster_rcnn"  # Directory containing the model files
 
 # Loop through each model file in the output directory
