@@ -22,7 +22,7 @@ if os.path.exists(checkpoint_path):
 model.eval()
 
 #image = Image.open("/home/yifei/bdd100k/val2017/b1c81faa-3df17267.jpg")
-image = Image.open("https://farm8.staticflickr.com/7034/6820125697_a4547a9e5b_z.jpg")
+image = Image.open("/home/yifei/coco_dataset/val2017/6820125697_a4547a9e5b_z.jpg")
 
 # Define the transformation to convert the image to a PyTorch tensor
 transform = transforms.ToTensor()
