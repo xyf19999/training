@@ -6,7 +6,7 @@ from torchvision import transforms
 from torchvision.models.detection import FasterRCNN_ResNet50_FPN_Weights
 import torchvision
 # Assuming you have defined your model
-model = fasterrcnn_resnet50_fpn(weights = None, num_class = 20) # Your PyTorch model
+model = fasterrcnn_resnet50_fpn(weights = None, num_classes = 20) # Your PyTorch model
 #model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
 
 checkpoint_path = '/home/yifei/bdd_coco/network_faster_rcnn_11_classes/checkpoint.pth'
