@@ -9,7 +9,7 @@ import torchvision
 model = fasterrcnn_resnet50_fpn(weights = None) # Your PyTorch model
 #model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
 
-checkpoint_path = '/home/yifei/bdd100k/network_faster_rcnn/checkpoint.pth'
+checkpoint_path = '/home/yifei/bdd_coco/network_faster_rcnn_11_classes/checkpoint.pth'
 
 if os.path.exists(checkpoint_path):
     # Load the checkpoint
