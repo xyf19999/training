@@ -90,9 +90,8 @@ for name, param in model.named_parameters():
 
     hook_fn.layer_outputs.clear() """
 
-print(source_folder_proper_training)
 
-for image_path in source_folder_proper_training:
+for image_path in images_proper_training:
     with torch.no_grad():
         image = Image.open(image_path)
         tensor_image = transform(image).to(device)  # Move tensor to GPU
