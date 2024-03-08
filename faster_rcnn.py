@@ -96,8 +96,9 @@ for image_path in source_folder_proper_training:
         tensor_image = transform(image).to(device)  # Move tensor to GPU
         images.append(tensor_image)
 
-for tensor_image in images:
+for idx, tensor_image in enumerate(images):
     with torch.no_grad():
+        print(idx)
         predictions = model([tensor_image])
         for layer_name, output in hook_fn.layer_outputs.items():
             keys = list(output.keys())
