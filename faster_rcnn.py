@@ -100,6 +100,8 @@ for image_path in images_proper_training:
 for idx, tensor_image in enumerate(images):
     with torch.no_grad():
         print(idx)
+        if idx == 101:
+            break
         predictions = model([tensor_image])
         for layer_name, output in hook_fn.layer_outputs.items():
             keys = list(output.keys())
