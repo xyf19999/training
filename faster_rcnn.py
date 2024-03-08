@@ -11,7 +11,7 @@ import numpy as np
 #model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model_path = '/home/yifei/monitizer/monitizer/benchmark_object_detection/networks/faster_rcnn_bdd100k.pth'
+model_path = '/home/yifei/bdd100k/faster_rcnn_bdd100k.pth'
 model = torch.load(model_path, map_location=device)
 
 model.eval()
