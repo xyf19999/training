@@ -56,7 +56,7 @@ source_folder_calibration = '/home/yifei/bdd100k/calibration/'
 images_calibration = os.listdir(source_folder_calibration)
 images_calibration = [source_folder_calibration+image for image in images_calibration]
 
-source_folder_proper_training = '/home/yifei/bdd100k/proper_training/'
+source_folder_proper_training = '/home/yifei/bdd100k/proper_training'
 images_proper_training = os.listdir(source_folder_proper_training)
 images_proper_training = [source_folder_proper_training+image for image in images_proper_training]
 
@@ -89,6 +89,8 @@ for name, param in model.named_parameters():
        
 
     hook_fn.layer_outputs.clear() """
+
+print(source_folder_proper_training)
 
 for image_path in source_folder_proper_training:
     with torch.no_grad():
