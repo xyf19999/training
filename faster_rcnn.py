@@ -115,8 +115,8 @@ for i in range(5):
   std_tensor = torch.std(current_feature_map_element, dim=0)
   upper_bound_tensor = mean_tensor + 2 * std_tensor
   lower_bound_tensor = mean_tensor - 2 * std_tensor
-  torch.save(upper_bound_tensor,'./upper_bound_tensor.pt')
-  torch.save(lower_bound_tensor,'./lower_bound_tensor.pt')
+  torch.save(upper_bound_tensor,f'./upper_bound_tensor_{i}.pt')
+  torch.save(lower_bound_tensor,f'./lower_bound_tensor_{i}.pt')
 
 
 """   mean_tensor_array = mean_tensor.cpu().numpy() 
