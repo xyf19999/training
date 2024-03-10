@@ -111,9 +111,15 @@ for i in range(5):
   print('start', i)
   current_feature_map_element = feature_map_dict[i]
   current_feature_map_element = torch.stack(current_feature_map_element).to(device)
-  np.save(f'./arrays_{i}.npy', [1,2,3])
   mean_tensor = torch.mean(current_feature_map_element, dim=0)
   std_tensor = torch.std(current_feature_map_element, dim=0)
-  mean_tensor_array = mean_tensor.cpu().numpy() 
+  upper_bound_tensor = mean_tensor + 2 * std_tensor
+  lower_bound_tensor = mean_tensor - 2 * std_tensor
+  torch.save(upper_bound_tensor,'./upper_bound_tensor.pt')
+  torch.save(lower_bound_tensor,'./lower_bound_tensor.pt')
+
+
+"""   mean_tensor_array = mean_tensor.cpu().numpy() 
   std_tensor_array = std_tensor.cpu().numpy()
-  np.save(f'./arrays_{i}.npy', (mean_tensor_array, std_tensor_array))
+  np.save(f'./arrays_{i}.npy', (mean_tensor_array, std_tensor_array)) """
+
