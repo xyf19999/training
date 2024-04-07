@@ -104,6 +104,7 @@ model = model.to('cpu')
 
 # Define your list of transforms
 preprocessing_transformers = [ 
+    transforms.Resize((480, 640)),
     transforms.ToTensor() # Add more transforms as needed
 ]
 
