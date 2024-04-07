@@ -129,7 +129,6 @@ for idx, (images, labels) in enumerate(coco_dataloader):
     print('start')
     print(images.shape)
     prediction = model(images)
-    print(prediction.shape)
     if idx == 2:
       break 
 
