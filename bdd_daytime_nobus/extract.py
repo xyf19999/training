@@ -3,7 +3,7 @@ import random
 import shutil
 import json
 
-usecase = 'train'
+usecase = 'val'
 # Path to the folder containing the images
 source_folder_train = f"/home/yifei/bdd_coco/{usecase}2017"
 
