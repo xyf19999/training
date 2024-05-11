@@ -3,7 +3,7 @@ import random
 import shutil
 import json
 
-usecase = 'val'
+usecase = 'train'
 # Path to the folder containing the images
 source_folder_train = f"/home/yifei/bdd_coco/{usecase}2017"
 
@@ -20,6 +20,7 @@ print(len(modified_data))
 
 modified_data_name = [element['name'] for element in modified_data]
 
+print(len(modified_data))
 with open(f'/home/yifei/bdd_daytime_no_bus/bdd_sunny_no_bus_{usecase}.json', "w") as json_file:
     json.dump(modified_data, json_file, indent=2)
 
