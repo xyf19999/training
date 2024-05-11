@@ -3,7 +3,7 @@ import random
 import shutil
 import json
 
-usecase = 'val'
+usecase = 'train'
 # Path to the folder containing the images
 source_folder_train = f"/home/yifei/bdd_coco/{usecase}2017"
 
@@ -13,7 +13,10 @@ folder_train_excluded = f"/home/yifei/bdd_daytime_no_bus/{usecase}2017"
 with open(f'/home/yifei/bdd_coco/bdd_coco_{usecase}.json', 'r') as input_file:
     original_data = json.load(input_file)
 
+print(len(original_data))
+
 modified_data = [element for element in original_data if '-' in element['name']]
+print(len(modified_data))
 
 modified_data_name = [element['name'] for element in modified_data]
 
