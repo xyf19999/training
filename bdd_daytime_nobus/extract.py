@@ -21,7 +21,7 @@ print(len(modified_data))
 modified_data_name = [element['name'] for element in modified_data]
 
 print(len(modified_data))
-with open(f'/home/yifei/bdd_daytime_no_bus/bdd_sunny_no_bus_{usecase}.json', "w") as json_file:
+with open(f'/home/yifei/bdd_daytime_no_bus/bdd_daytime_no_bus_{usecase}.json', "w") as json_file:
     json.dump(modified_data, json_file, indent=2)
 
 for image in modified_data_name:
