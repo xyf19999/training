@@ -4,12 +4,12 @@ import shutil
 import json
 
 # Path to the folder containing the images
-source_folder_train = "/home/yifei/bdd100k/val2017"
+source_folder_train = "/home/yifei/bdd_coco/val2017"
 
 # Paths to the new folders
-folder_train_excluded = "/home/yifei/bdd100k/val_for_optimization"
+folder_train_excluded = "/home/yifei/bdd_coco/val_for_optimization"
 
-file_path = "/home/yifei/my_project/training/val_optimize.txt"
+file_path = "/home/yifei/my_project/training/val_for_optimization_bdd_coco.txt"
 
 # Initialize an empty list to store the items
 excluded_image_name = []
