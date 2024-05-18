@@ -4,12 +4,12 @@ import shutil
 import json
 
 # Path to the folder containing the images
-source_folder_train = "/Users/mac/Desktop/bdd100k/bdd100k_in_yolo/train/images"
+source_folder_train = "/home/yifei/bdd100k/val2017"
 
 # Paths to the new folders
-folder_train_excluded = "/Users/mac/Desktop/test"
+folder_train_excluded = "/home/yifei/bdd100k/val_for_optimzation"
 
-file_path = "/Users/mac/Desktop/bdd100k/test.txt"
+file_path = "./training/val_optimize.txt"
 
 # Initialize an empty list to store the items
 excluded_image_name = []
