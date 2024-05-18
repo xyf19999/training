@@ -7,9 +7,9 @@ import json
 source_folder_train = "/home/yifei/bdd100k/val2017"
 
 # Paths to the new folders
-folder_train_excluded = "/home/yifei/bdd100k/val_for_optimzation"
+folder_train_excluded = "/home/yifei/bdd100k/val_for_optimization"
 
-file_path = "./training/val_optimize.txt"
+file_path = "/home/yifei/my_project/training/val_optimize.txt"
 
 # Initialize an empty list to store the items
 excluded_image_name = []
