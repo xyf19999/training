@@ -1,23 +1,38 @@
 import os
 import torch
-from torchvision.models.detection import fasterrcnn_resnet50_fpn
+from torchvision.models.detection import fasterrcnn_resnet50_fpn, retinanet_resnet50_fpn
 from PIL import Image
 from torchvision import transforms
 from torchvision.models.detection import FasterRCNN_ResNet50_FPN_Weights
 import torchvision
+import sys
 # Assuming you have defined your model
-model = fasterrcnn_resnet50_fpn(weights = None, num_classes = 11) # Your PyTorch model
+model_faster = fasterrcnn_resnet50_fpn(weights = None, num_classes = 20) # Your PyTorch model
+model_retina = retinanet_resnet50_fpn(weights= None, num_classes = 20)
 #model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights=torchvision.models.detection.FasterRCNN_ResNet50_FPN_Weights.DEFAULT)
 
-checkpoint_path = '/home/yifei/bdd100k/network_faster_rcnn_11_classes/checkpoint.pth'
+checkpoint_path_faster = '/home/yifei/bdd_coco/faster_rcnn/checkpoint.pth'
+checkpoint_path_retina = '/home/yifei/bdd_coco/retina/checkpoint.pth'
 
-if os.path.exists(checkpoint_path):
+if os.path.exists(checkpoint_path_faster):
     # Load the checkpoint
-    checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))  # Load to CPU if needed
+    checkpoint = torch.load(checkpoint_path_faster, map_location=torch.device('cpu'))  # Load to CPU if needed # map_location=torch.device('cpu')
     
     # Load the model state dictionary from the checkpoint
-    model.load_state_dict(checkpoint["model"])
+    model_faster.load_state_dict(checkpoint["model"])
 
+if os.path.exists(checkpoint_path_retina):
+    # Load the checkpoint
+    checkpoint = torch.load(checkpoint_path_retina, map_location=torch.device('cpu'))  # Load to CPU if needed # map_location=torch.device('cpu')
+    
+    # Load the model state dictionary from the checkpoint
+    model_retina.load_state_dict(checkpoint["model"])
+
+torch.save(model_faster, '/home/yifei/bdd_coco/faster_rcnn_bdd_coco.pth')
+torch.save(model_retina, '/home/yifei/bdd_coco/retina_bdd_coco.pth')
+
+
+sys.exit()
 
 model.eval()
 
