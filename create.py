@@ -50,6 +50,7 @@ with open(file_path_proper_training, "r") as file:
     for line in file:
         # Remove any leading or trailing whitespace and append the line to the list
         proper_training.append(line.strip())
+print(len(proper_training))
 
 calibration = []
 with open(file_path_calibration, "r") as file:
