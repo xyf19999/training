@@ -104,7 +104,7 @@ train_coco_part = [element for element in modified_val if '-' not in element['na
 val_bdd_part = [element for element in modified_val if '-' in element['name']]
 val_coco_part = [element for element in modified_val if '-' not in element['name']]
 
-train_to_val_coco = random.sample(train_coco_part, 2695)
+train_to_val_coco = random.sample(train_coco_part, 1813)
 train_to_val_coco_name = [element['name'] for element in train_to_val_coco]
 
 new_val_coco_part = val_coco_part + train_to_val_coco
