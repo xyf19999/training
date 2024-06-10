@@ -99,7 +99,7 @@ for image in occluded:
 
 
 train_bdd_part = [element for element in modified_train if '-' in element['name']]
-train_coco_part = [element for element in modified_val if '-' not in element['name']]
+train_coco_part = [element for element in modified_train if '-' not in element['name']]
 print(len(train_coco_part), 'coco length')
 
 val_bdd_part = [element for element in modified_val if '-' in element['name']]
