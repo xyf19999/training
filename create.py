@@ -74,6 +74,8 @@ with open(f'/home/yifei/bdd_coco/bdd_coco_val.json', 'r') as input_file:
 modified_train = [element for element in original_data_train if element['name'] not in all_ex]
 modified_val = original_data_val
 
+val_name = [element['name'] for element in original_data_val]
+
 for image in test:
     src = os.path.join(source_folder_train, image)
     dst = os.path.join(target_folder_test, image)
@@ -97,7 +99,7 @@ for image in occluded:
 
 
 train_bdd_part = [element for element in modified_train if '-' in element['name']]
-train_coco_part = [element for element in modified_val if '-' not in element]
+train_coco_part = [element for element in modified_val if '-' not in element['name']]
 
 val_bdd_part = [element for element in modified_val if '-' in element['name']]
 val_coco_part = [element for element in modified_val if '-' not in element['name']]
@@ -124,7 +126,12 @@ for image in new_train_name:
     dst = os.path.join(target_folder_train2017, image)
     shutil.copy(src, dst)
 
-for image in new_val_name:
+for image in val_name:
     src = os.path.join(source_folder_val, image)
+    dst = os.path.join(target_folder_val2017, image)
+    shutil.copy(src, dst)
+
+for image in train_to_val_coco_name:
+    src = os.path.join(source_folder_train, image)
     dst = os.path.join(target_folder_val2017, image)
     shutil.copy(src, dst)
