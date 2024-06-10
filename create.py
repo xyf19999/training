@@ -98,9 +98,9 @@ for image in occluded:
     shutil.copy(src, dst)  
 
 
-
 train_bdd_part = [element for element in modified_train if '-' in element['name']]
 train_coco_part = [element for element in modified_val if '-' not in element['name']]
+print(len(train_coco_part), 'coco length')
 
 val_bdd_part = [element for element in modified_val if '-' in element['name']]
 val_coco_part = [element for element in modified_val if '-' not in element['name']]
