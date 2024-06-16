@@ -27,7 +27,7 @@ with open(f'/home/yifei/bdd100k/bdd100k_labels_images_val.json', 'r') as input_f
 
 data_val = remove_labels(data_val)
 
-data_remaining_name = [data_val[i] for i in included_image_val]
+data_remaining_name = [data_val[i]['name'] for i in included_image_val]
 print(len(data_remaining_name))
 
 source_folder = '/home/yifei/bdd100k/val'
