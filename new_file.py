@@ -23,7 +23,7 @@ def remove_labels(data):
             entry['labels'] = [label for label in entry['labels'] if label.get('category') not in ['drivable area', 'lane']]
     return data
 
-with open(f'/home/yifei/bdd_coco_old/bdd100k_labels_images_val.json', 'r') as input_file:
+with open(f'/home/yifei/bdd_coco_old/bdd_coco_val.json', 'r') as input_file:
     data_val = json.load(input_file)
 
 data_val = remove_labels(data_val)
