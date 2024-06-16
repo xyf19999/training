@@ -1,6 +1,7 @@
 import json
 import shutil
 import os
+import sys
 
 def extract_first_column(file_path):
     result = []
@@ -35,5 +36,8 @@ destination_path = '/home/yifei/bdd100k/val_for_optimization'
 for file in data_remaining_name:
     source_path = os.path.join(source_folder, file)
     destination_path = os.path.join(destination_path, file)
+    print(file)
+    print(destination_path)
+    sys.exit()
     shutil.copy(source_path, destination_path)
 
