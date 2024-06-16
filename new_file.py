@@ -34,10 +34,7 @@ print(len(data_remaining_name))
 source_folder = '/home/yifei/bdd100k/val'
 destination_path = '/home/yifei/bdd100k/val_for_optimization'
 for file in data_remaining_name:
-    source_path = os.path.join(source_folder, file)
-    destination_path = os.path.join(destination_path, file)
-    print(file)
-    print(destination_path)
-    sys.exit()
-    shutil.copy(source_path, destination_path)
+    source_path_new = os.path.join(source_folder, file)
+    destination_path_new = os.path.join(destination_path, file)
+    shutil.copy(source_path_new, destination_path_new)
 
