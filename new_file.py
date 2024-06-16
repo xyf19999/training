@@ -1,67 +1,39 @@
 import json
-from pycocotools.coco import COCO
-import argparse
+import shutil
+import os
 
+def extract_first_column(file_path):
+    result = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            # Split by comma and take the first part
+            index = line.split(',')[0].strip()
+            index = eval(index)
+            result.append(index)
+    print(len(result))
+    return result
+included_image_val = extract_first_column('/home/yifei/monitizer/monitizer/benchmark_object_detection/specifications/bdd100k/generated_OOD_region_val.txt')
 
-def parse_arguments():
-    # parse the arguments
-    parser = argparse.ArgumentParser(description='coco to bdd')
-    parser.add_argument(
-          "--annFile", "-a",
-          default="/home/yifei/bdd_coco_old/annotations/instances_val2017.json",
-          help="path to coco label file",
-    )
-    parser.add_argument(
-          "--save_path", "-s",
-          default="/home/yifei/bdd_coco_old/bdd_coco_val_after_move.json",
-          help="path to save bdd formatted label file",
-    )
-    return parser.parse_args()
+usecase = 'val'
 
+def remove_labels(data):
+    for entry in data:
+        if 'labels' in entry and isinstance(entry['labels'], list):
+            entry['labels'] = [label for label in entry['labels'] if label.get('category') not in ['drivable area', 'lane']]
+    return data
 
-def transform(annFile):
-    # transform to bdd format
-    coco = COCO(annFile)
-    imgIds = coco.getImgIds()
-    imgIds = sorted(imgIds)
-    catsIds = coco.getCatIds()
-    cats = coco.loadCats(catsIds)
-    nms = [cat['name'] for cat in cats]
-    catsMap = dict(zip(coco.getCatIds(), nms))
-    bdd_label = []
-    for imgId in imgIds:
-        img = coco.loadImgs(imgId)[0]
-        annIds = coco.getAnnIds(imgIds=img['id'])
-        anns = coco.loadAnns(annIds)
-        det_dict = {}
-        det_dict["name"] = img["file_name"]
-        det_dict["url"] = img["coco_url"]
-        det_dict["attributes"] = {"weather": "undefined",
-                                  "scene": "undefined",
-                                  "timeofday": "undefined"}
-        det_dict["labels"] = []
-        for ann in anns:
-            label = {"id": ann["id"],
-                     "category": catsMap[ann["category_id"]],
-                     "manualShape": True,
-                     "manualAttributes": True,
-                     "box2d": {
-                       "x1": ann["bbox"][0],
-                       "y1": ann["bbox"][1],
-                       "x2": ann["bbox"][0] + ann["bbox"][2] - 1,
-                       "y2": ann["bbox"][1] + ann["bbox"][3] - 1,
-                     }}
-            det_dict["labels"].append(label)
-        bdd_label.append(det_dict)
-    return bdd_label
+with open(f'/home/yifei/bdd100k/bdd100k_labels_images_val.json', 'r') as input_file:
+    data_val = json.load(input_file)
 
+data_val = remove_labels(data_val)
 
-def main():
-    args = parse_arguments()
-    bdd_label = transform(args.annFile)
-    with open(args.save_path, 'w') as outfile:
-        json.dump(bdd_label, outfile)
+data_remaining_name = [data_val[i] for i in included_image_val]
+print(len(data_remaining_name))
 
+source_folder = '/home/yifei/bdd100k/val'
+destination_path = '/home/yifei/bdd100k/val_for_optimization'
+for file in data_remaining_name:
+    source_path = os.path.join(source_folder, file)
+    destination_path = os.path.join(destination_path, file)
+    shutil.copy(source_path, destination_path)
 
-if __name__ == '__main__':
-    main()
