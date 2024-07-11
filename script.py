@@ -37,8 +37,6 @@ folder_path_calibration = '/home/yifei/bdd100k/calibration'
 folder_path_occluded = '/home/yifei/bdd100k/occluded'
 folder_path_val_for_optimization = '/home/yifei/bdd100k/val_for_optimization'
 
-whole_image = collect_jpg_names(folder_path_test) + collect_jpg_names(folder_path_proper_training) + \
-+ collect_jpg_names(folder_path_calibration) + collect_jpg_names(folder_path_occluded) + \
-collect_jpg_names(folder_path_val_for_optimization)
+whole_image = collect_jpg_names(folder_path_test) + collect_jpg_names(folder_path_proper_training) + collect_jpg_names(folder_path_calibration) + collect_jpg_names(folder_path_occluded) + collect_jpg_names(folder_path_val_for_optimization)
 
 write_list_to_file(file_path='/home/yifei/bdd100k_special_sets.txt', elements=whole_image)
