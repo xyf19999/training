@@ -31,18 +31,18 @@ def write_list_to_file(file_path, elements):
             file.write(f"{element}\n")
 
 #bdd100k
-folder_path_train = '/home/yifei/bdd_coco_old/train2017'
-folder_path_val = '/home/yifei/bdd_coco_old/val2017'
-folder_path_test = '/home/yifei/bdd_coco_old/test'
-folder_path_proper_training = '/home/yifei/bdd_coco_old/proper_training'
-folder_path_calibration = '/home/yifei/bdd_coco_old/calibration'
-folder_path_occluded = '/home/yifei/bdd_coco_old/occluded'
-folder_path_val_for_optimization = '/home/yifei/bdd_coco_old/val_for_optimization'
+folder_path_train = '/home/yifei/bdd_day_no_bus/train2017'
+folder_path_val = '/home/yifei/bdd_day_no_bus/val2017'
+folder_path_test = '/home/yifei/bdd_day_no_bus/test'
+folder_path_proper_training = '/home/yifei/bdd_day_no_bus/proper_training'
+folder_path_calibration = '/home/yifei/bdd_day_no_bus/calibration'
+folder_path_occluded = '/home/yifei/bdd_day_no_bus/occluded'
+folder_path_val_for_optimization = '/home/yifei/bdd_day_no_bus/val_for_optimization'
 
 whole_image = collect_jpg_names(folder_path_test) + collect_jpg_names(folder_path_proper_training) + collect_jpg_names(folder_path_calibration) + collect_jpg_names(folder_path_occluded) + collect_jpg_names(folder_path_val_for_optimization)
 train_set = collect_jpg_names(folder_path_train)
 val_set = collect_jpg_names(folder_path_val)
 
-write_list_to_file(file_path='/home/yifei/bdd_coco_train.txt', elements=train_set)
-write_list_to_file(file_path='/home/yifei/bdd_coco_val.txt', elements=val_set)
-write_list_to_file(file_path='/home/yifei/bdd_coco_special_sets.txt', elements=whole_image)
+write_list_to_file(file_path='/home/yifei/bdd_day_no_bus_train.txt', elements=train_set)
+write_list_to_file(file_path='/home/yifei/bdd_day_no_bus_val.txt', elements=val_set)
+write_list_to_file(file_path='/home/yifei/bdd_day_no_bus_special_sets.txt', elements=whole_image)
