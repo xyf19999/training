@@ -31,12 +31,12 @@ def write_list_to_file(file_path, elements):
             file.write(f"{element}\n")
 
 #bdd100k
-folder_path_test = '/home/yifei/bdd100k/test'
-folder_path_proper_training = '/home/yifei/bdd100k/proper_training'
-folder_path_calibration = '/home/yifei/bdd100k/calibration'
-folder_path_occluded = '/home/yifei/bdd100k/occluded'
-folder_path_val_for_optimization = '/home/yifei/bdd100k/val_for_optimization'
+folder_path_test = '/home/yifei/bdd_coco_old/test'
+folder_path_proper_training = '/home/yifei/bdd_coco_old/proper_training'
+folder_path_calibration = '/home/yifei/bdd_coco_old/calibration'
+folder_path_occluded = '/home/yifei/bdd_coco_old/occluded'
+folder_path_val_for_optimization = '/home/yifei/bdd_coco_old/val_for_optimization'
 
 whole_image = collect_jpg_names(folder_path_test) + collect_jpg_names(folder_path_proper_training) + collect_jpg_names(folder_path_calibration) + collect_jpg_names(folder_path_occluded) + collect_jpg_names(folder_path_val_for_optimization)
 
-write_list_to_file(file_path='/home/yifei/bdd100k_special_sets.txt', elements=whole_image)
+write_list_to_file(file_path='/home/yifei/bdd_coco_special_sets.txt', elements=whole_image)
